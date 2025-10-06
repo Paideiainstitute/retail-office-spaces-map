@@ -309,7 +309,8 @@
                     <div class="total-info">
                         <a href="Ground Floor Retail For Lease 1-2K, Cool Zone.pdf#page=${pageNumbers.split(',')[0]}" 
                            target="_blank" 
-                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                           style="color: #007bff; text-decoration: none; font-weight: bold;"
+                           onclick="return checkPdfAvailability(this, 'Ground Floor Retail For Lease 1-2K, Cool Zone.pdf')">
                             📄 View in PDF (Page ${pageNumbers.split(',')[0]})
                         </a>
                     </div>
@@ -387,7 +388,8 @@
                     <div class="total-info">
                         <a href="Office Space 4-5K, Cool Zone.pdf#page=${pageNumbers.split(',')[0]}" 
                            target="_blank" 
-                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                           style="color: #007bff; text-decoration: none; font-weight: bold;"
+                           onclick="return checkPdfAvailability(this, 'Office Space 4-5K, Cool Zone.pdf')">
                             📄 View in PDF (Page ${pageNumbers.split(',')[0]})
                         </a>
                     </div>
@@ -585,7 +587,8 @@
                     <div class="total-info">
                         <a href="Ground Floor Retail For Lease 1-2K, Cool Zone.pdf#page=${pageNumbers.split(',')[0]}" 
                            target="_blank" 
-                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                           style="color: #007bff; text-decoration: none; font-weight: bold;"
+                           onclick="return checkPdfAvailability(this, 'Ground Floor Retail For Lease 1-2K, Cool Zone.pdf')">
                             📄 View in PDF (Page ${pageNumbers.split(',')[0]})
                         </a>
                     </div>
@@ -644,7 +647,8 @@
                     <div class="total-info">
                         <a href="Office Space 4-5K, Cool Zone.pdf#page=${pageNumbers.split(',')[0]}" 
                            target="_blank" 
-                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                           style="color: #007bff; text-decoration: none; font-weight: bold;"
+                           onclick="return checkPdfAvailability(this, 'Office Space 4-5K, Cool Zone.pdf')">
                             📄 View in PDF (Page ${pageNumbers.split(',')[0]})
                         </a>
                     </div>
@@ -730,6 +734,28 @@
             } else {
                 console.error('Could not find marker for address:', address, 'type:', type);
             }
+        }
+        
+        // Function to check PDF availability and handle gracefully
+        function checkPdfAvailability(linkElement, pdfFilename) {
+            // Try to fetch the PDF to see if it's available
+            fetch(pdfFilename, { method: 'HEAD' })
+                .then(response => {
+                    if (!response.ok) {
+                        // PDF not available, show alert and prevent navigation
+                        alert(`PDF file "${pdfFilename}" is not available online. This feature requires the PDF files to be uploaded to the repository.`);
+                        return false;
+                    }
+                    return true;
+                })
+                .catch(error => {
+                    // PDF not available, show alert and prevent navigation
+                    alert(`PDF file "${pdfFilename}" is not available online. This feature requires the PDF files to be uploaded to the repository.`);
+                    return false;
+                });
+            
+            // Always prevent default for now - user can modify this behavior
+            return false;
         }
         
         // Load data when page loads

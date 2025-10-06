@@ -48,9 +48,26 @@ An interactive Google Maps application for visualizing retail and office spaces 
 
 1. Create a new repository on GitHub
 2. Upload `retail_office_map_github.html` and rename it to `index.html`
-3. Go to repository Settings → Pages
-4. Select "Deploy from a branch" → "main" → "/ (root)"
-5. Your app will be available at: `https://yourusername.github.io/your-repo-name`
+3. **Optional**: Upload PDF files for full functionality:
+   - `Ground Floor Retail For Lease 1-2K, Cool Zone.pdf`
+   - `Office Space 4-5K, Cool Zone.pdf`
+4. Go to repository Settings → Pages
+5. Select "Deploy from a branch" → "main" → "/ (root)"
+6. Your app will be available at: `https://yourusername.github.io/your-repo-name`
+
+### PDF Files for Online Version
+
+**Without PDFs uploaded:**
+- ✅ Map functionality works perfectly
+- ✅ All interactive features work
+- ❌ PDF links show helpful error message
+- 📦 Repository stays lightweight (~1MB)
+
+**With PDFs uploaded:**
+- ✅ Full functionality including PDF navigation
+- ✅ Direct links to specific pages
+- ⚠️ Larger repository size (~45MB)
+- ⚠️ Slower clone/download times
 
 ## Data Source
 
