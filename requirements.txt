@@ -1,0 +1,16 @@
+# Python dependencies for the retail/office space mapping application
+
+# Core dependencies (already included in Python standard library)
+# - csv
+# - json
+# - re
+# - http.server
+# - socketserver
+# - os
+
+# Optional: For enhanced PDF processing (if needed in future)
+# PyPDF2>=3.0.0
+# pdfplumber>=0.9.0
+
+# Note: This application primarily uses Python standard library modules.
+# The main functionality works with built-in modules only.
