@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail & Office Spaces Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        .info-window {
+            max-width: 300px;
+        }
+        .space-info {
+            margin: 5px 0;
+            padding: 3px;
+            border-bottom: 1px solid #eee;
+        }
+        .space-info:last-child {
+            border-bottom: none;
+        }
+        .space-details {
+            font-size: 12px;
+            color: #666;
+        }
+        .total-info {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .search-toggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .toggle-label {
+            font-weight: bold;
+            color: #333;
+        }
+        .dislike-button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .dislike-button:hover {
+            background: #c82333;
+        }
+        .dislike-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        /* PDF Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 0;
+            border: none;
+            width: 90%;
+            height: 90%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 2001;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        .pdf-toolbar {
+            background: #f5f5f5;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pdf-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .pdf-controls button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .pdf-controls button:hover {
+            background: #0056b3;
+        }
+        .pdf-controls button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .pdf-controls button.active {
+            background: #28a745;
+        }
+        .pdf-page-info {
+            font-weight: bold;
+            color: #333;
+        }
+        .pdf-viewer {
+            width: 100%;
+            height: calc(100% - 60px);
+            overflow: auto;
+            background: #525659;
+        }
+        .pdf-canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .pdf-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: #666;
+            font-size: 16px;
+        }
+        .quality-indicator {
+            font-size: 11px;
+            color: #666;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-toggle">
+        <div class="toggle-switch">
+            <label class="switch">
+                <input type="checkbox" id="searchModeToggle">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label" id="toggleLabel">Search by Retail</span>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="pdf-toolbar">
+                <div class="pdf-controls">
+                    <button id="prevPage" onclick="changePage(-1)">← Previous</button>
+                    <button id="nextPage" onclick="changePage(1)">Next →</button>
+                    <button onclick="zoomIn()">Zoom In</button>
+                    <button onclick="zoomOut()">Zoom Out</button>
+                    <button onclick="fitToWidth()">Fit Width</button>
+                    <button id="highQualityBtn" onclick="toggleHighQuality()">High Quality</button>
+                </div>
+                <div class="pdf-page-info">
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <span class="quality-indicator" id="qualityIndicator">Standard Quality</span>
+                </div>
+            </div>
+            <div class="pdf-viewer" id="pdfViewer">
+                <div class="pdf-loading">Loading PDF...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the map
+        let map;
+        let retailMarkers = [];
+        let officeMarkers = [];
+        let geocoder;
+        let searchMode = 'retail'; // 'retail' or 'office'
+        let dislikedMarkers = new Set(); // Track disliked markers for the session
+        
+        // PDF.js variables
+        let pdfDoc = null;
+        let currentPage = 1;
+        let currentScale = 2.0; // Increased default scale for better quality
+        let currentPdfUrl = '';
+        let highQualityMode = false;
+        let devicePixelRatio = window.devicePixelRatio || 1;
+        
+        // Data from CSV
+        const spacesData = [];
+        
+        // Load CSV data
+        async function loadCSVData() {
+            try {
+                const response = await fetch('all_spaces.csv');
+                const csvText = await response.text();
+                const lines = csvText.split('\n');
+                
+                // Skip header line
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (line) {
+                        const columns = line.split(',');
+                        if (columns.length >= 9) {
+                            spacesData.push({
+                                property_type: columns[0],
+                                address: columns[1],
+                                city_state: columns[2],
+                                floor: columns[3],
+                                suite: columns[4],
+                                use_type: columns[5],
+                                size_sf: columns[6],
+                                rent_per_sf: columns[7],
+                                page_number: columns[8]
+                            });
+                        }
+                    }
+                }
+                
+                console.log('Loaded', spacesData.length, 'spaces');
+                initializeMap();
+                setupToggle();
+            } catch (error) {
+                console.error('Error loading CSV:', error);
+                // Fallback: initialize map without data
+                initializeMap();
+                setupToggle();
+            }
+        }
+        
+        function setupToggle() {
+            const toggle = document.getElementById('searchModeToggle');
+            const label = document.getElementById('toggleLabel');
+            
+            toggle.addEventListener('change', function() {
+                searchMode = this.checked ? 'office' : 'retail';
+                label.textContent = this.checked ? 'Search by Office' : 'Search by Retail';
+                
+                // Clear all markers
+                clearAllMarkers();
+                
+                // Reinitialize with new mode
+                if (searchMode === 'retail') {
+                    showRetailMarkers();
+                } else {
+                    showOfficeMarkers();
+                }
+            });
+        }
+        
+        function clearAllMarkers() {
+            retailMarkers.forEach(marker => marker.setMap(null));
+            officeMarkers.forEach(marker => marker.setMap(null));
+            retailMarkers = [];
+            officeMarkers = [];
+        }
+        
+        function initializeMap() {
+            // Initialize map centered on Manhattan
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: { lat: 40.7589, lng: -73.9851 }, // Times Square area
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            
+            geocoder = new google.maps.Geocoder();
+            
+            // Show initial markers based on search mode
+            if (searchMode === 'retail') {
+                showRetailMarkers();
+            } else {
+                showOfficeMarkers();
+            }
+        }
+        
+        function showRetailMarkers() {
+            // Group retail spaces by address
+            const retailByAddress = {};
+            spacesData.forEach(space => {
+                if (space.property_type === 'Retail') {
+                    const address = space.address;
+                    if (!retailByAddress[address]) {
+                        retailByAddress[address] = [];
+                    }
+                    retailByAddress[address].push(space);
+                }
+            });
+            
+            // Add retail markers
+            Object.keys(retailByAddress).forEach(address => {
+                geocodeAddress(address, retailByAddress[address], 'retail');
+            });
+        }
+        
+        function showOfficeMarkers() {
+            // Group office spaces by address
+            const officeByAddress = {};
+            spacesData.forEach(space => {
+                if (space.property_type === 'Office') {
+                    const address = space.address;
+                    if (!officeByAddress[address]) {
+                        officeByAddress[address] = [];
+                    }
+                    officeByAddress[address].push(space);
+                }
+            });
+            
+            // Add office markers
+            Object.keys(officeByAddress).forEach(address => {
+                geocodeAddress(address, officeByAddress[address], 'office');
+            });
+        }
+        
+        function geocodeAddress(address, spaces, type) {
+            geocoder.geocode({ address: address + ', New York, NY' }, (results, status) => {
+                if (status === 'OK' && results[0]) {
+                    const location = results[0].geometry.location;
+                    
+                    if (type === 'retail') {
+                        addRetailMarker(location, address, spaces);
+                    } else if (type === 'office') {
+                        addOfficeMarker(location, address, spaces);
+                    }
+                } else {
+                    console.warn('Geocoding failed for:', address, 'Status:', status);
+                }
+            });
+        }
+        
+        function addRetailMarker(location, address, spaces, isNearbyMarker = false) {
+            // Check if this marker is disliked
+            const markerKey = `${address}_retail`;
+            const isDisliked = dislikedMarkers.has(markerKey);
+            const markerColor = isDisliked ? 'grey' : 'red';
+            
+            console.log('Creating retail marker for:', address, 'isDisliked:', isDisliked, 'color:', markerColor);
+            
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: address,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: markerColor,
+                    fillOpacity: 1,
+                    strokeColor: 'white',
+                    strokeWeight: 2,
+                    scale: 8
+                }
+            });
+            
+            // Mark as nearby marker if applicable
+            marker.isNearbyMarker = isNearbyMarker;
+            
+            // Create info window content
+            const totalSF = spaces.reduce((sum, space) => sum + (parseInt(space.size_sf) || 0), 0);
+            const pageNumbers = [...new Set(spaces.map(space => space.page_number))].join(', ');
+            const infoContent = `
+                <div class="info-window">
+                    <div class="total-info">${address}</div>
+                    <div class="total-info">${spaces.length} Retail Spaces - ${totalSF.toLocaleString()} SF Total</div>
+                    <div class="total-info">PDF Pages: ${pageNumbers}</div>
+                    <div class="total-info">
+                        <a href="#" onclick="openPdfModal('Ground Floor Retail For Lease 1-2K, Cool Zone.pdf', ${pageNumbers.split(',')[0]}); return false;" 
+                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                            📄 View in PDF (Page ${pageNumbers.split(',')[0]})
+                        </a>
+                    </div>
+                    <div class="total-info">
+                        <button class="dislike-button" onclick="dislikeMarker('${address}', 'retail')" ${isDisliked ? 'disabled' : ''}>
+                            ${isDisliked ? '👎 Disliked' : '👎 Dislike'}
+                        </button>
+                    </div>
+                    ${spaces.map(space => `
+                        <div class="space-info">
+                            <div><strong>Floor:</strong> ${space.floor || 'N/A'}</div>
+                            <div><strong>Suite:</strong> ${space.suite || 'N/A'}</div>
+                            <div><strong>Size:</strong> ${space.size_sf} SF</div>
+                            <div><strong>Rent:</strong> ${space.rent_per_sf || 'N/A'}</div>
+                            <div><strong>Page:</strong> ${space.page_number}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            console.log('Info content for retail marker:', infoContent);
+            
+            const infoWindow = new google.maps.InfoWindow({
+                content: infoContent
+            });
+            
+            marker.addListener('click', () => {
+                // Close all other info windows
+                retailMarkers.forEach(m => {
+                    if (m.infoWindow) m.infoWindow.close();
+                });
+                
+                infoWindow.open(map, marker);
+                marker.infoWindow = infoWindow;
+                
+                // If in retail search mode, show nearby office spaces
+                if (searchMode === 'retail') {
+                    showNearbyOffices(address, infoWindow, marker);
+                }
+            });
+            
+            retailMarkers.push(marker);
+        }
+        
+        function addOfficeMarker(location, address, spaces) {
+            // Check if this marker is disliked
+            const markerKey = `${address}_office`;
+            const isDisliked = dislikedMarkers.has(markerKey);
+            const markerColor = isDisliked ? 'grey' : 'blue';
+            
+            console.log('Creating office marker for:', address, 'isDisliked:', isDisliked, 'color:', markerColor);
+            
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: address,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: markerColor,
+                    fillOpacity: 1,
+                    strokeColor: 'white',
+                    strokeWeight: 2,
+                    scale: 8
+                }
+            });
+            
+            // Create info window content
+            const totalSF = spaces.reduce((sum, space) => sum + (parseInt(space.size_sf) || 0), 0);
+            const pageNumbers = [...new Set(spaces.map(space => space.page_number))].join(', ');
+            const infoContent = `
+                <div class="info-window">
+                    <div class="total-info">${address}</div>
+                    <div class="total-info">${spaces.length} Office Spaces - ${totalSF.toLocaleString()} SF Total</div>
+                    <div class="total-info">PDF Pages: ${pageNumbers}</div>
+                    <div class="total-info">
+                        <a href="#" onclick="openPdfModal('Office Space 4-5K, Cool Zone.pdf', ${pageNumbers.split(',')[0]}); return false;" 
+                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                            📄 View in PDF (Page ${pageNumbers.split(',')[0]})
+                        </a>
+                    </div>
+                    <div class="total-info">
+                        <button class="dislike-button" onclick="dislikeMarker('${address}', 'office')" ${isDisliked ? 'disabled' : ''}>
+                            ${isDisliked ? '👎 Disliked' : '👎 Dislike'}
+                        </button>
+                    </div>
+                    ${spaces.map(space => `
+                        <div class="space-info">
+                            <div><strong>Floor:</strong> ${space.floor || 'N/A'}</div>
+                            <div><strong>Suite:</strong> ${space.suite || 'N/A'}</div>
+                            <div><strong>Size:</strong> ${space.size_sf} SF</div>
+                            <div><strong>Rent:</strong> ${space.rent_per_sf || 'N/A'}</div>
+                            <div><strong>Page:</strong> ${space.page_number}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            console.log('Info content for office marker:', infoContent);
+            
+            const infoWindow = new google.maps.InfoWindow({
+                content: infoContent
+            });
+            
+            marker.addListener('click', () => {
+                // Close all other info windows
+                officeMarkers.forEach(m => {
+                    if (m.infoWindow) m.infoWindow.close();
+                });
+                retailMarkers.forEach(m => {
+                    if (m.infoWindow) m.infoWindow.close();
+                });
+                
+                infoWindow.open(map, marker);
+                marker.infoWindow = infoWindow;
+                
+                // If in office search mode, show nearby retail spaces
+                if (searchMode === 'office') {
+                    showNearbyRetail(address, infoWindow, marker);
+                }
+            });
+            
+            officeMarkers.push(marker);
+        }
+        
+        function showNearbyOffices(retailAddress, infoWindow, marker) {
+            // Clear existing office markers
+            officeMarkers.forEach(marker => marker.setMap(null));
+            officeMarkers = [];
+            
+            // Find the retail marker to get its position
+            const retailMarker = retailMarkers.find(m => m.getTitle() === retailAddress);
+            if (!retailMarker) return;
+            
+            const retailPosition = retailMarker.getPosition();
+            
+            // Group office spaces by address
+            const officeByAddress = {};
+            spacesData.forEach(space => {
+                if (space.property_type === 'Office') {
+                    const address = space.address;
+                    if (!officeByAddress[address]) {
+                        officeByAddress[address] = [];
+                    }
+                    officeByAddress[address].push(space);
+                }
+            });
+            
+            // Count nearby offices and add markers
+            let nearbyOfficeCount = 0;
+            const nearbyOfficeAddresses = [];
+            
+            Object.keys(officeByAddress).forEach(address => {
+                geocodeAddressNearby(address, officeByAddress[address], 'office', retailPosition, () => {
+                    nearbyOfficeCount++;
+                    nearbyOfficeAddresses.push(address);
+                    
+                    // Update info window with count
+                    if (infoWindow && marker) {
+                        updateRetailInfoWindow(marker, nearbyOfficeCount);
+                    }
+                });
+            });
+            
+            // Center map on the retail location
+            map.setCenter(retailPosition);
+            map.setZoom(15);
+        }
+        
+        function showNearbyRetail(officeAddress, infoWindow, marker) {
+            // Clear existing retail markers (only the ones added for nearby search)
+            // We need to be careful not to clear the main retail markers in office mode
+            const nearbyRetailMarkers = retailMarkers.filter(m => m.isNearbyMarker);
+            nearbyRetailMarkers.forEach(marker => marker.setMap(null));
+            retailMarkers = retailMarkers.filter(m => !m.isNearbyMarker);
+            
+            // Find the office marker to get its position
+            const officeMarker = officeMarkers.find(m => m.getTitle() === officeAddress);
+            if (!officeMarker) return;
+            
+            const officePosition = officeMarker.getPosition();
+            
+            // Group retail spaces by address
+            const retailByAddress = {};
+            spacesData.forEach(space => {
+                if (space.property_type === 'Retail') {
+                    const address = space.address;
+                    if (!retailByAddress[address]) {
+                        retailByAddress[address] = [];
+                    }
+                    retailByAddress[address].push(space);
+                }
+            });
+            
+            // Count nearby retail and add markers
+            let nearbyRetailCount = 0;
+            
+            Object.keys(retailByAddress).forEach(address => {
+                geocodeAddressNearby(address, retailByAddress[address], 'retail', officePosition, () => {
+                    nearbyRetailCount++;
+                    
+                    // Update info window with count
+                    if (infoWindow && marker) {
+                        updateOfficeInfoWindow(marker, nearbyRetailCount);
+                    }
+                });
+            });
+            
+            // Center map on the office location
+            map.setCenter(officePosition);
+            map.setZoom(15);
+        }
+        
+        function geocodeAddressNearby(address, spaces, type, referencePosition, callback) {
+            geocoder.geocode({ address: address + ', New York, NY' }, (results, status) => {
+                if (status === 'OK' && results[0]) {
+                    const location = results[0].geometry.location;
+                    
+                    // Calculate distance from retail position
+                    const distance = google.maps.geometry.spherical.computeDistanceBetween(
+                        referencePosition, 
+                        location
+                    );
+                    
+                    // Only show if within 500 feet (about 150 meters)
+                    if (distance <= 150) {
+                        if (type === 'office') {
+                            addOfficeMarker(location, address, spaces);
+                            if (callback) callback();
+                        } else if (type === 'retail') {
+                            addRetailMarker(location, address, spaces, true); // true = isNearbyMarker
+                            if (callback) callback();
+                        }
+                    }
+                } else {
+                    console.warn('Geocoding failed for:', address, 'Status:', status);
+                }
+            });
+        }
+        
+        function updateRetailInfoWindow(marker, nearbyOfficeCount) {
+            if (!marker.infoWindow) return;
+            
+            // Get the original spaces data for this marker
+            const address = marker.getTitle();
+            const spaces = spacesData.filter(space => 
+                space.property_type === 'Retail' && space.address === address
+            );
+            
+            // Group spaces by address (should be the same address)
+            const spacesByAddress = {};
+            spaces.forEach(space => {
+                if (!spacesByAddress[space.address]) {
+                    spacesByAddress[space.address] = [];
+                }
+                spacesByAddress[space.address].push(space);
+            });
+            
+            const addressSpaces = spacesByAddress[address] || [];
+            const totalSF = addressSpaces.reduce((sum, space) => sum + (parseInt(space.size_sf) || 0), 0);
+            const pageNumbers = [...new Set(addressSpaces.map(space => space.page_number))].join(', ');
+            
+            // Check if this marker is disliked
+            const markerKey = `${address}_retail`;
+            const isDisliked = dislikedMarkers.has(markerKey);
+            
+            const updatedContent = `
+                <div class="info-window">
+                    <div class="total-info">${address}</div>
+                    <div class="total-info">${addressSpaces.length} Retail Spaces - ${totalSF.toLocaleString()} SF Total</div>
+                    <div class="total-info">PDF Pages: ${pageNumbers}</div>
+                    <div class="total-info" style="color: #007bff; font-weight: bold;">Nearby Office Spaces: ${nearbyOfficeCount}</div>
+                    <div class="total-info">
+                        <a href="#" onclick="openPdfModal('Ground Floor Retail For Lease 1-2K, Cool Zone.pdf', ${pageNumbers.split(',')[0]}); return false;" 
+                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                            📄 View in PDF (Page ${pageNumbers.split(',')[0]})
+                        </a>
+                    </div>
+                    <div class="total-info">
+                        <button class="dislike-button" onclick="dislikeMarker('${address}', 'retail')" ${isDisliked ? 'disabled' : ''}>
+                            ${isDisliked ? '👎 Disliked' : '👎 Dislike'}
+                        </button>
+                    </div>
+                    ${addressSpaces.map(space => `
+                        <div class="space-info">
+                            <div><strong>Floor:</strong> ${space.floor || 'N/A'}</div>
+                            <div><strong>Suite:</strong> ${space.suite || 'N/A'}</div>
+                            <div><strong>Size:</strong> ${space.size_sf} SF</div>
+                            <div><strong>Rent:</strong> ${space.rent_per_sf || 'N/A'}</div>
+                            <div><strong>Page:</strong> ${space.page_number}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            marker.infoWindow.setContent(updatedContent);
+        }
+        
+        function updateOfficeInfoWindow(marker, nearbyRetailCount) {
+            if (!marker.infoWindow) return;
+            
+            // Get the original spaces data for this marker
+            const address = marker.getTitle();
+            const spaces = spacesData.filter(space => 
+                space.property_type === 'Office' && space.address === address
+            );
+            
+            // Group spaces by address (should be the same address)
+            const spacesByAddress = {};
+            spaces.forEach(space => {
+                if (!spacesByAddress[space.address]) {
+                    spacesByAddress[space.address] = [];
+                }
+                spacesByAddress[space.address].push(space);
+            });
+            
+            const addressSpaces = spacesByAddress[address] || [];
+            const totalSF = addressSpaces.reduce((sum, space) => sum + (parseInt(space.size_sf) || 0), 0);
+            const pageNumbers = [...new Set(addressSpaces.map(space => space.page_number))].join(', ');
+            
+            // Check if this marker is disliked
+            const markerKey = `${address}_office`;
+            const isDisliked = dislikedMarkers.has(markerKey);
+            
+            const updatedContent = `
+                <div class="info-window">
+                    <div class="total-info">${address}</div>
+                    <div class="total-info">${addressSpaces.length} Office Spaces - ${totalSF.toLocaleString()} SF Total</div>
+                    <div class="total-info">PDF Pages: ${pageNumbers}</div>
+                    <div class="total-info" style="color: #dc3545; font-weight: bold;">Nearby Retail Spaces: ${nearbyRetailCount}</div>
+                    <div class="total-info">
+                        <a href="#" onclick="openPdfModal('Office Space 4-5K, Cool Zone.pdf', ${pageNumbers.split(',')[0]}); return false;" 
+                           style="color: #007bff; text-decoration: none; font-weight: bold;">
+                            📄 View in PDF (Page ${pageNumbers.split(',')[0]})
+                        </a>
+                    </div>
+                    <div class="total-info">
+                        <button class="dislike-button" onclick="dislikeMarker('${address}', 'office')" ${isDisliked ? 'disabled' : ''}>
+                            ${isDisliked ? '👎 Disliked' : '👎 Dislike'}
+                        </button>
+                    </div>
+                    ${addressSpaces.map(space => `
+                        <div class="space-info">
+                            <div><strong>Floor:</strong> ${space.floor || 'N/A'}</div>
+                            <div><strong>Suite:</strong> ${space.suite || 'N/A'}</div>
+                            <div><strong>Size:</strong> ${space.size_sf} SF</div>
+                            <div><strong>Rent:</strong> ${space.rent_per_sf || 'N/A'}</div>
+                            <div><strong>Page:</strong> ${space.page_number}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            marker.infoWindow.setContent(updatedContent);
+        }
+        
+        function dislikeMarker(address, type) {
+            const markerKey = `${address}_${type}`;
+            dislikedMarkers.add(markerKey);
+            
+            console.log('Disliking marker:', address, type, 'Key:', markerKey);
+            
+            // Find and update the marker color
+            let markers = type === 'retail' ? retailMarkers : officeMarkers;
+            console.log('Looking in markers array:', markers.length, 'markers');
+            
+            const marker = markers.find(m => m.getTitle() === address);
+            console.log('Found marker:', marker ? 'YES' : 'NO');
+            
+            if (marker) {
+                console.log('Changing marker to grey...');
+                console.log('Current marker icon:', marker.getIcon());
+                
+                // Force marker re-render by removing and re-adding
+                const position = marker.getPosition();
+                const map = marker.getMap();
+                
+                // Remove marker from map
+                marker.setMap(null);
+                
+                // Create new marker with grey icon
+                const newIcon = {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'grey',
+                    fillOpacity: 1,
+                    strokeColor: 'white',
+                    strokeWeight: 2,
+                    scale: 8
+                };
+                
+                // Update the marker's icon and re-add to map
+                marker.setIcon(newIcon);
+                marker.setMap(map);
+                
+                console.log('New marker icon set:', newIcon);
+                console.log('Marker icon after change:', marker.getIcon());
+                
+                // Check the actual DOM element
+                setTimeout(() => {
+                    const markerElement = document.querySelector(`[title="${address}"]`);
+                    if (markerElement) {
+                        console.log('Found marker DOM element:', markerElement);
+                        console.log('Marker element background-image:', window.getComputedStyle(markerElement).backgroundImage);
+                    } else {
+                        console.log('Could not find marker DOM element for address:', address);
+                    }
+                }, 100);
+                
+                // Disable the dislike button
+                const button = document.querySelector(`button[onclick="dislikeMarker('${address}', '${type}')"]`);
+                if (button) {
+                    button.disabled = true;
+                    button.textContent = '👎 Disliked';
+                }
+                console.log('Marker updated successfully');
+            } else {
+                console.error('Could not find marker for address:', address, 'type:', type);
+            }
+        }
+        
+        // PDF.js Functions
+        function openPdfModal(pdfUrl, pageNumber = 1) {
+            currentPdfUrl = pdfUrl;
+            currentPage = parseInt(pageNumber);
+            currentScale = 2.0; // Start with higher quality
+            highQualityMode = false;
+            
+            // Show modal
+            document.getElementById('pdfModal').style.display = 'block';
+            
+            // Load PDF
+            loadPdf(pdfUrl);
+        }
+        
+        async function loadPdf(url) {
+            try {
+                document.getElementById('pdfViewer').innerHTML = '<div class="pdf-loading">Loading PDF...</div>';
+                
+                // Load PDF document
+                pdfDoc = await pdfjsLib.getDocument(url).promise;
+                
+                // Update page info
+                document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${pdfDoc.numPages}`;
+                updateQualityIndicator();
+                
+                // Render current page
+                renderPage(currentPage);
+                
+                // Update navigation buttons
+                document.getElementById('prevPage').disabled = currentPage <= 1;
+                document.getElementById('nextPage').disabled = currentPage >= pdfDoc.numPages;
+                
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                document.getElementById('pdfViewer').innerHTML = '<div class="pdf-loading">Error loading PDF. Please make sure the PDF file is uploaded to the repository.</div>';
+            }
+        }
+        
+        async function renderPage(pageNum) {
+            try {
+                const page = await pdfDoc.getPage(pageNum);
+                
+                // Calculate scale with high-DPI support
+                let scale = currentScale;
+                if (highQualityMode) {
+                    scale = currentScale * devicePixelRatio;
+                }
+                
+                const viewport = page.getViewport({ scale: scale });
+                
+                // Create canvas with high-DPI support
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                
+                // Set canvas size for high-DPI displays
+                if (highQualityMode) {
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.style.width = (viewport.width / devicePixelRatio) + 'px';
+                    canvas.style.height = (viewport.height / devicePixelRatio) + 'px';
+                } else {
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                }
+                
+                canvas.className = 'pdf-canvas';
+                
+                // Clear viewer and add canvas
+                const viewer = document.getElementById('pdfViewer');
+                viewer.innerHTML = '';
+                viewer.appendChild(canvas);
+                
+                // Render page with high quality settings
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                    intent: 'display'
+                };
+                
+                await page.render(renderContext).promise;
+                
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.getElementById('pdfViewer').innerHTML = '<div class="pdf-loading">Error rendering page.</div>';
+            }
+        }
+        
+        function changePage(direction) {
+            if (!pdfDoc) return;
+            
+            const newPage = currentPage + direction;
+            if (newPage >= 1 && newPage <= pdfDoc.numPages) {
+                currentPage = newPage;
+                renderPage(currentPage);
+                
+                // Update page info and buttons
+                document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${pdfDoc.numPages}`;
+                document.getElementById('prevPage').disabled = currentPage <= 1;
+                document.getElementById('nextPage').disabled = currentPage >= pdfDoc.numPages;
+            }
+        }
+        
+        function zoomIn() {
+            currentScale += 0.5; // Larger increments for better control
+            renderPage(currentPage);
+        }
+        
+        function zoomOut() {
+            if (currentScale > 0.5) {
+                currentScale -= 0.5;
+                renderPage(currentPage);
+            }
+        }
+        
+        function fitToWidth() {
+            // Calculate scale to fit width
+            const viewer = document.getElementById('pdfViewer');
+            const viewerWidth = viewer.clientWidth - 40; // Account for padding
+            
+            if (pdfDoc) {
+                pdfDoc.getPage(currentPage).then(page => {
+                    const viewport = page.getViewport({ scale: 1.0 });
+                    currentScale = viewerWidth / viewport.width;
+                    renderPage(currentPage);
+                });
+            }
+        }
+        
+        function toggleHighQuality() {
+            highQualityMode = !highQualityMode;
+            const btn = document.getElementById('highQualityBtn');
+            
+            if (highQualityMode) {
+                btn.textContent = 'High Quality ✓';
+                btn.classList.add('active');
+            } else {
+                btn.textContent = 'High Quality';
+                btn.classList.remove('active');
+            }
+            
+            updateQualityIndicator();
+            renderPage(currentPage); // Re-render with new quality settings
+        }
+        
+        function updateQualityIndicator() {
+            const indicator = document.getElementById('qualityIndicator');
+            if (highQualityMode) {
+                indicator.textContent = `High Quality (${Math.round(currentScale * devicePixelRatio * 100)}%)`;
+            } else {
+                indicator.textContent = `Standard Quality (${Math.round(currentScale * 100)}%)`;
+            }
+        }
+        
+        // Modal event handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('pdfModal');
+            const closeBtn = document.getElementsByClassName('close')[0];
+            
+            // Close modal when clicking X
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(event) {
+                if (modal.style.display === 'block') {
+                    switch(event.key) {
+                        case 'Escape':
+                            modal.style.display = 'none';
+                            break;
+                        case 'ArrowLeft':
+                            changePage(-1);
+                            break;
+                        case 'ArrowRight':
+                            changePage(1);
+                            break;
+                        case 'h':
+                        case 'H':
+                            toggleHighQuality();
+                            break;
+                    }
+                }
+            });
+        });
+        
+        // Load data when page loads
+        window.onload = loadCSVData;
+    </script>
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- Google Maps API -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3PPp4obCqNstaVBPkC9AU_GrKUzRTzuM&loading=async&libraries=geometry&callback=loadCSVData">
+    </script>
+</body>
+</html>
