@@ -1,0 +1,417 @@
+property_type,address,city_state,floor,suite,use_type,size_sf,rent_per_sf,page_number
+Retail,1 146 W 29th St,,GRND,Retail,Retail,1500,Withheld,1
+Retail,1 146 W 29th St,,GRND,2,Retail,1919,$7.82,1
+Retail,1 146 W 29th St,,,Retail,Retail,1500,$9.00,1
+Retail,4 261 3rd Ave,,GRND,Corner,Retail,700,Withheld,6
+Retail,4 261 3rd Ave,,GRND,-,Retail,1505,Withheld,6
+Retail,4 261 3rd Ave,,GRND,117,Retail,1600,Withheld,6
+Retail,4 261 3rd Ave,,GRND,-,Retail,1690,Withheld,6
+Retail,5 139 E 23rd St,,GRND,-,Retail,1505,Withheld,7
+Retail,5 139 E 23rd St,,GRND,117,Retail,1600,Withheld,7
+Retail,5 139 E 23rd St,,GRND,-,Retail,1690,Withheld,7
+Retail,5 139 E 23rd St,,GRND,-,Retail,1600,Withheld,7
+Retail,7 11 Penn Pl,,GRND,-,Retail,1690,Withheld,10
+Retail,7 11 Penn Pl,,GRND,-,Retail,1600,Withheld,10
+Retail,7 11 Penn Pl,,GRND,-,Office/Retail,1665,$8.75,10
+Retail,8 311 Second Ave,,GRND,-,Retail,1600,Withheld,11
+Retail,8 311 Second Ave,,GRND,-,Office/Retail,1665,$8.75,11
+Retail,9 146 W 4th St,,GRND,-,Office/Retail,1665,$8.75,13
+Retail,9 146 W 4th St,,GRND,Upper,Retail,1520,$5.00,13
+Retail,11 28 W 12th St,,GRND,Upper,Retail,1520,$5.00,17
+Retail,11 28 W 12th St,,GRND,1W,Retail,1806,$8.31,17
+Retail,11 28 W 12th St,,GRND,-,Retail,2000,$13.33,17
+Retail,12 123 W 20th St,,GRND,1W,Retail,1806,$8.31,19
+Retail,12 123 W 20th St,,GRND,-,Retail,2000,$13.33,19
+Retail,12 123 W 20th St,,GRND,-,Retail,1000,$6.66,19
+Retail,13 36 E 23rd St,,GRND,-,Retail,2000,$13.33,21
+Retail,13 36 E 23rd St,,GRND,-,Retail,1000,$6.66,21
+Retail,13 36 E 23rd St,,GRND,-,Retail,1400,$5.76,21
+Retail,15 150 W 26th St,,GRND,-,Retail,1400,$5.76,24
+Retail,15 150 W 26th St,,GRND,-,Retail,1800,$8.08,24
+Retail,15 150 W 26th St,,,-,Retail,1050,$12.38,24
+Retail,16 149 W 27th St,,GRND,-,Retail,1800,$8.08,26
+Retail,16 149 W 27th St,,,-,Retail,1050,$12.38,26
+Retail,16 149 W 27th St,,GRND,-,Office/Retail,1806,Withheld,26
+Retail,16 149 W 27th St,,,Space,Retail,1335,Withheld,26
+Retail,17 113 E 29th St,,,-,Retail,1050,$12.38,27
+Retail,17 113 E 29th St,,GRND,-,Office/Retail,1806,Withheld,27
+Retail,17 113 E 29th St,,,Space,Retail,1335,Withheld,27
+Retail,17 113 E 29th St,,GRND,-,Retail,1700,$3.25,27
+Retail,19 160 Bleecker St,,,Space,Retail,1335,Withheld,30
+Retail,19 160 Bleecker St,,GRND,-,Retail,1700,$3.25,30
+Retail,19 160 Bleecker St,,,-,Retail,1500,$10.50,30
+Retail,22 244 Eighth Ave,,GRND,-,Retail,1500,$10.67,35
+Retail,22 244 Eighth Ave,,GRND,-,Retail,950,Withheld,35
+Retail,22 244 Eighth Ave,,GRND,-,Retail,800,$12.92,35
+Retail,23 230 Fifth Ave,,GRND,-,Retail,950,Withheld,37
+Retail,23 230 Fifth Ave,,GRND,-,Retail,800,$12.92,37
+Retail,23 230 Fifth Ave,,GRND,-,Retail,1500,$87.27,37
+Retail,24 148 Madison Ave,,GRND,-,Retail,950,Withheld,39
+Retail,24 148 Madison Ave,,GRND,-,Retail,800,$12.92,39
+Retail,24 148 Madison Ave,,GRND,-,Retail,1500,$87.27,39
+Retail,24 148 Madison Ave,,GRND,-,Retail,1500,$10.00,39
+Retail,25 437 Park Ave,,GRND,-,Retail,800,$12.92,40
+Retail,25 437 Park Ave,,GRND,-,Retail,1500,$87.27,40
+Retail,25 437 Park Ave,,GRND,-,Retail,1500,$10.00,40
+Retail,26 133 Second Ave,,GRND,-,Retail,1500,$87.27,42
+Retail,26 133 Second Ave,,GRND,-,Retail,1500,$10.00,42
+Retail,27 5 St  Marks Pl,,GRND,-,Retail,1500,$10.00,44
+Retail,27 5 St  Marks Pl,,GRND,A,Retail,1466,Withheld,44
+Retail,29 85 4th Ave,,GRND,A,Retail,1466,Withheld,47
+Retail,29 85 4th Ave,,GRND,C,Retail,1040,Withheld,47
+Retail,29 85 4th Ave,,GRND,D,Retail,694,Withheld,47
+Retail,29 85 4th Ave,,GRND,B,Retail,578,Withheld,47
+Retail,29 85 4th Ave,,GRND,-,Retail,1785,Withheld,47
+Retail,30 120 7th Ave,,GRND,C,Retail,1040,Withheld,49
+Retail,30 120 7th Ave,,GRND,D,Retail,694,Withheld,49
+Retail,30 120 7th Ave,,GRND,B,Retail,578,Withheld,49
+Retail,30 120 7th Ave,,GRND,-,Retail,1785,Withheld,49
+Retail,30 120 7th Ave,,,21,Retail,2000,Withheld,49
+Retail,33 60 E 8th St,,,747,Retail,1250,Withheld,54
+Retail,33 60 E 8th St,,GRND,-,Retail,2000,Withheld,54
+Retail,33 60 E 8th St,,,Commu-,Retail,1027,Withheld,54
+Retail,34 58 E 11th St,,GRND,-,Retail,2000,Withheld,56
+Retail,34 58 E 11th St,,,Commu-,Retail,1027,Withheld,56
+Retail,34 58 E 11th St,,,-,Retail,1452,Withheld,56
+Retail,35 21 E 12th St,,,Commu-,Retail,1027,Withheld,57
+Retail,35 21 E 12th St,,,-,Retail,1452,Withheld,57
+Retail,35 21 E 12th St,,GRND,A,Retail,1265,Withheld,57
+Retail,35 21 E 12th St,,GRND,B,Retail,807,Withheld,57
+Retail,38 212 W 14th St,,GRND,-,Retail,1600,Withheld,63
+Retail,38 212 W 14th St,,GRND,-,Retail,2000,Withheld,63
+Retail,38 212 W 14th St,,,555,Retail,1290,Withheld,63
+Retail,39 232 W 14th St,,GRND,-,Retail,2000,Withheld,65
+Retail,39 232 W 14th St,,,555,Retail,1290,Withheld,65
+Retail,39 232 W 14th St,,GRND,-,Retail,1700,Withheld,65
+Retail,40 101 W 15th St,,,555,Retail,1290,Withheld,67
+Retail,40 101 W 15th St,,GRND,-,Retail,1700,Withheld,67
+Retail,40 101 W 15th St,,GRND,-,Retail,1868,Withheld,67
+Retail,41 17 E 17th St,,GRND,-,Retail,1700,Withheld,69
+Retail,41 17 E 17th St,,GRND,-,Retail,1868,Withheld,69
+Retail,41 17 E 17th St,,GRND,-,Retail,1098,Withheld,69
+Retail,42 21 W 17th St,,GRND,-,Retail,1868,Withheld,70
+Retail,42 21 W 17th St,,GRND,-,Retail,1098,Withheld,70
+Retail,42 21 W 17th St,,GRND,-,Retail,2000,Withheld,70
+Retail,43 16 W 18th St,,GRND,-,Retail,1098,Withheld,72
+Retail,43 16 W 18th St,,GRND,-,Retail,2000,Withheld,72
+Retail,44 200 E 20th St,,GRND,-,Retail,1098,Withheld,74
+Retail,44 200 E 20th St,,GRND,-,Retail,2000,Withheld,74
+Retail,44 200 E 20th St,,GRND,-,Retail,2000,Withheld,74
+Retail,45 44 W 22nd St,,GRND,-,Retail,2000,Withheld,75
+Retail,45 44 W 22nd St,,GRND,-,Retail,2000,Withheld,75
+Retail,45 44 W 22nd St,,,-,Retail,2000,Withheld,75
+Retail,46 18 E 23rd St,,GRND,-,Retail,2000,Withheld,77
+Retail,46 18 E 23rd St,,,-,Retail,2000,Withheld,77
+Retail,46 18 E 23rd St,,GRND,-,Retail,1700,Withheld,77
+Retail,48 170 W 23rd St,,GRND,-,Retail,1700,Withheld,81
+Retail,48 170 W 23rd St,,GRND,-,Retail,1100,Withheld,81
+Retail,48 170 W 23rd St,,GRND,-,Retail,1600,Withheld,81
+Retail,50 77 W 24th St,,GRND,-,Retail,1600,Withheld,85
+Retail,50 77 W 24th St,,GRND,-,Retail,1467,Withheld,85
+Retail,51 200 W 26th St,,GRND,-,Retail,1467,Withheld,87
+Retail,52 118 E 28th St,,GRND,A,Retail,1190,Withheld,90
+Retail,52 118 E 28th St,,GRND,-,Retail,1275,Withheld,90
+Retail,53 243 W 28th St,,GRND,A,Retail,1190,Withheld,91
+Retail,53 243 W 28th St,,GRND,-,Retail,1275,Withheld,91
+Retail,54 14 W 29th St,,GRND,-,Retail,1275,Withheld,93
+Retail,54 14 W 29th St,,GRND,-,Retail,2000,Withheld,93
+Retail,54 14 W 29th St,,GRND,-,Retail,1300,Withheld,93
+Retail,54 14 W 29th St,,GRND,-,Retail,1200,Withheld,93
+Retail,55 102 W 29th St,,GRND,-,Retail,2000,Withheld,95
+Retail,55 102 W 29th St,,GRND,-,Retail,1300,Withheld,95
+Retail,55 102 W 29th St,,GRND,-,Retail,1200,Withheld,95
+Retail,56 140 W 30th St,,GRND,-,Retail,1300,Withheld,97
+Retail,56 140 W 30th St,,GRND,-,Retail,1200,Withheld,97
+Retail,56 140 W 30th St,,GRND,-,Retail,1300,Withheld,97
+Retail,60 45 Bleecker St,,GRND,-,Retail,1415,Withheld,103
+Retail,60 45 Bleecker St,,GRND,-,Retail,1900,Withheld,103
+Retail,60 45 Bleecker St,,GRND,774,Office/Retail,725,Withheld,103
+Retail,68 294 Eighth Ave,,GRND,-,Retail,2000,Withheld,116
+Retail,68 294 Eighth Ave,,GRND,-,Retail,1200,Withheld,116
+Retail,68 294 Eighth Ave,,GRND,-,Office/Retail,750,Withheld,116
+Retail,69 79 Fifth Ave,,GRND,-,Retail,1200,Withheld,118
+Retail,69 79 Fifth Ave,,GRND,-,Office/Retail,750,Withheld,118
+Retail,69 79 Fifth Ave,,GRND,-,Retail,1500,Withheld,118
+Retail,70 234 Fifth Ave,,GRND,-,Retail,1200,Withheld,119
+Retail,70 234 Fifth Ave,,GRND,-,Office/Retail,750,Withheld,119
+Retail,70 234 Fifth Ave,,GRND,-,Retail,1500,Withheld,119
+Retail,71 256 Fifth Ave,,GRND,-,Office/Retail,750,Withheld,120
+Retail,71 256 Fifth Ave,,GRND,-,Retail,1500,Withheld,120
+Retail,71 256 Fifth Ave,,GRND,-,Retail,620,Withheld,120
+Retail,72 3 Great Jones St,,GRND,-,Retail,1500,Withheld,122
+Retail,72 3 Great Jones St,,GRND,-,Retail,620,Withheld,122
+Retail,72 3 Great Jones St,,GRND,109,Retail,1866,Withheld,122
+Retail,72 3 Great Jones St,,GRND,104,Retail,1182,Withheld,122
+Retail,73 25 Great Jones St,,GRND,-,Retail,620,Withheld,124
+Retail,73 25 Great Jones St,,GRND,109,Retail,1866,Withheld,124
+Retail,73 25 Great Jones St,,GRND,104,Retail,1182,Withheld,124
+Retail,73 25 Great Jones St,,GRND,-,Retail,1250,Withheld,124
+Retail,74 1 Irving Pl,,GRND,109,Retail,1866,Withheld,126
+Retail,74 1 Irving Pl,,GRND,104,Retail,1182,Withheld,126
+Retail,74 1 Irving Pl,,GRND,-,Retail,1250,Withheld,126
+Retail,74 1 Irving Pl,,GRND,Ground,Retail,1019,Withheld,126
+Retail,75 372 Lafayette St,,GRND,-,Retail,1250,Withheld,128
+Retail,75 372 Lafayette St,,GRND,Ground,Retail,1019,Withheld,128
+Retail,75 372 Lafayette St,,GRND,-,Retail,1000,Withheld,128
+Retail,76 445 Lafayette St,,GRND,Ground,Retail,1019,Withheld,130
+Retail,76 445 Lafayette St,,GRND,-,Retail,1000,Withheld,130
+Retail,76 445 Lafayette St,,GRND,A,Retail,1300,Withheld,130
+Retail,76 445 Lafayette St,,GRND,B,Retail,1100,Withheld,130
+Retail,78 121 Madison Ave,,GRND,A,Retail,1300,Withheld,134
+Retail,78 121 Madison Ave,,GRND,B,Retail,1100,Withheld,134
+Retail,78 121 Madison Ave,,,687,Retail,1050,Withheld,134
+Retail,78 121 Madison Ave,,,683,Retail,1000,Withheld,134
+Retail,78 121 Madison Ave,,GRND,-,Retail,1100,Withheld,134
+Retail,79 250 Mercer St,,,687,Retail,1050,Withheld,136
+Retail,79 250 Mercer St,,,683,Retail,1000,Withheld,136
+Retail,79 250 Mercer St,,GRND,-,Retail,1100,Withheld,136
+Retail,79 250 Mercer St,,GRND,-,Retail,1027,Withheld,136
+Retail,79 250 Mercer St,,GRND,-,Retail,1600,Withheld,136
+Retail,80 337 Park Ave,,GRND,-,Retail,1100,Withheld,138
+Retail,80 337 Park Ave,,GRND,-,Retail,1027,Withheld,138
+Retail,80 337 Park Ave,,GRND,-,Retail,1600,Withheld,138
+Retail,80 337 Park Ave,,GRND,A,Retail,1987,Withheld,138
+Retail,81 470 Park Ave,,GRND,-,Retail,1027,Withheld,139
+Retail,81 470 Park Ave,,GRND,-,Retail,1600,Withheld,139
+Retail,81 470 Park Ave,,GRND,A,Retail,1987,Withheld,139
+Retail,83 275 Seventh Ave,,GRND,A,Retail,1987,Withheld,142
+Retail,83 275 Seventh Ave,,GRND,-,Retail,2000,Withheld,142
+Retail,83 275 Seventh Ave,,GRND,-,Retail,1700,Withheld,142
+Retail,83 275 Seventh Ave,,GRND,A,Retail,1500,Withheld,142
+Retail,84 287 Seventh Ave,,GRND,-,Retail,2000,Withheld,143
+Retail,84 287 Seventh Ave,,GRND,-,Retail,1700,Withheld,143
+Retail,84 287 Seventh Ave,,GRND,A,Retail,1500,Withheld,143
+Retail,85 299 Seventh Ave,,GRND,-,Retail,1700,Withheld,145
+Retail,85 299 Seventh Ave,,GRND,A,Retail,1500,Withheld,145
+Retail,85 299 Seventh Ave,,GRND,-,Retail,1600,Withheld,145
+Retail,86 345 Seventh Ave,,GRND,A,Retail,1500,Withheld,147
+Retail,86 345 Seventh Ave,,GRND,-,Retail,1600,Withheld,147
+Retail,86 345 Seventh Ave,,GRND,-,Retail,812,Withheld,147
+Retail,88 388 Third Ave,,GRND,-,Retail,1600,Withheld,149
+Retail,88 388 Third Ave,,GRND,-,Retail,812,Withheld,149
+Retail,88 388 Third Ave,,GRND,-,Retail,1390,Withheld,149
+Retail,89 441 Third Ave,,GRND,-,Retail,812,Withheld,151
+Retail,89 441 Third Ave,,GRND,-,Retail,1390,Withheld,151
+Retail,89 441 Third Ave,,GRND,-,Retail,1000,Withheld,151
+Retail,91 11 Waverly Pl,,GRND,-,Retail,1000,Withheld,155
+Office,1 27 W 20th St,,12,-,Office,500,$3.00,1
+Office,1 27 W 20th St,,10,-,Office/Medical,3005,$3.33,1
+Office,2 134 W 29th St,,12,-,Office,500,$3.00,2
+Office,2 134 W 29th St,,10,-,Office/Medical,3005,$3.33,2
+Office,3 115 E 23rd St,,10,-,Office/Medical,3005,$3.33,3
+Office,5 242 W 30th St,,2,-,Office,4911,$3.00,6
+Office,6 119 W 23rd St,,2,-,Office,4911,$3.00,8
+Office,6 119 W 23rd St,,2,-,Office,5000,,8
+Office,6 119 W 23rd St,,9,-,Office,5000,$3.04,8
+Office,7 134 W 25th St,,2,-,Office,4911,$3.00,9
+Office,7 134 W 25th St,,2,-,Office,5000,,9
+Office,7 134 W 25th St,,9,-,Office,5000,$3.04,9
+Office,7 134 W 25th St,,5,-,Office,2500,$4.79,9
+Office,7 134 W 25th St,,6,-,Office,2500,$4.79,9
+Office,8 134 W 26th St,,2,-,Office,5000,,11
+Office,8 134 W 26th St,,9,-,Office,5000,$3.04,11
+Office,8 134 W 26th St,,5,-,Office,2500,$4.79,11
+Office,8 134 W 26th St,,6,-,Office,2500,$4.79,11
+Office,8 134 W 26th St,,19,-,Office,1000,,11
+Office,9 141 W 28th St,,2,-,Office,5000,,12
+Office,9 141 W 28th St,,9,-,Office,5000,$3.04,12
+Office,9 141 W 28th St,,5,-,Office,2500,$4.79,12
+Office,9 141 W 28th St,,6,-,Office,2500,$4.79,12
+Office,9 141 W 28th St,,19,-,Office,1000,,12
+Office,9 141 W 28th St,,2,-,Office,3300,,12
+Office,11 307 Seventh Ave,,19,-,Office,1000,,14
+Office,11 307 Seventh Ave,,2,-,Office,3300,,14
+Office,11 307 Seventh Ave,,3,-,Office,4500,,14
+Office,12 220 E 23rd St,,2,-,Office,3300,,15
+Office,12 220 E 23rd St,,3,-,Office,4500,,15
+Office,12 220 E 23rd St,,3,-,Office,4000,$3.75,15
+Office,14 281 Park Ave,,3,-,Office,4000,$3.75,18
+Office,14 281 Park Ave,,2,-,Office/Retail,2325,$4.58,18
+Office,14 281 Park Ave,,3,-,Office/Retail,2325,,18
+Office,14 281 Park Ave,,3,-,Office/Retail,2500,$2.92,18
+Office,15 134 5th Ave,,3,-,Office,4000,$3.75,19
+Office,15 134 5th Ave,,2,-,Office/Retail,2325,$4.58,19
+Office,15 134 5th Ave,,3,-,Office/Retail,2325,,19
+Office,15 134 5th Ave,,3,-,Office/Retail,2500,$2.92,19
+Office,15 134 5th Ave,,10,-,Office,4500,$3.83,19
+Office,16 21 E 17th St,,2,-,Office/Retail,2325,$4.58,20
+Office,16 21 E 17th St,,3,-,Office/Retail,2325,,20
+Office,16 21 E 17th St,,3,-,Office/Retail,2500,$2.92,20
+Office,16 21 E 17th St,,10,-,Office,4500,$3.83,20
+Office,16 21 E 17th St,,3,-,Office,5000,$4.42,20
+Office,18 133 W 19th St,,10,-,Office,4500,$3.83,23
+Office,18 133 W 19th St,,3,-,Office,5000,$4.42,23
+Office,18 133 W 19th St,,7,-,Office,4300,$4.33,23
+Office,19 45 E 20th St,,3,-,Office,5000,$4.42,24
+Office,19 45 E 20th St,,7,-,Office,4300,$4.33,24
+Office,19 45 E 20th St,,5,-,Office,4000,,24
+Office,21 117 E 24th St,,7,-,Office,4300,$4.33,26
+Office,21 117 E 24th St,,5,-,Office,4000,,26
+Office,21 117 E 24th St,,4,-,Office,200,,26
+Office,21 117 E 24th St,,7,-,Office,100,,26
+Office,21 117 E 24th St,,8,-,Office,4000,$4.92,26
+Office,23 148 W 24th St,,4,-,Office,200,,29
+Office,23 148 W 24th St,,7,-,Office,100,,29
+Office,23 148 W 24th St,,8,-,Office,4000,$4.92,29
+Office,23 148 W 24th St,,,-,Office,4500,$3.00,29
+Office,24 159 W 25th St,,4,-,Office,200,,30
+Office,24 159 W 25th St,,7,-,Office,100,,30
+Office,24 159 W 25th St,,8,-,Office,4000,$4.92,30
+Office,24 159 W 25th St,,,-,Office,4500,$3.00,30
+Office,25 164 W 25th St,,,-,Office,4500,$3.00,31
+Office,27 151 W 26th St,,4,-,Office,4184,$3.17,34
+Office,27 151 W 26th St,,10,-,Office,5000,$2.50,34
+Office,28 226 W 26th St,,4,-,Office,4184,$3.17,35
+Office,28 226 W 26th St,,10,-,Office,5000,$2.50,35
+Office,30 28 W 27th St,,10,-,Office,5000,$2.50,38
+Office,30 28 W 27th St,,2,-,Office,4000,$3.25,38
+Office,34 39 W 29th St,,2,-,Office,5000,$2.67,44
+Office,34 39 W 29th St,,6,-,Office,3500,$3.00,44
+Office,34 39 W 29th St,,7,-,Office,4500,$3.33,44
+Office,37 110 W 30th St,,7,-,Office,4500,$3.33,47
+Office,37 110 W 30th St,,,-,Office/Retail,2400,$4.04,47
+Office,37 110 W 30th St,,GRND,-,Office/Retail,2300,$4.04,47
+Office,37 110 W 30th St,,2,-,Office/Retail,2000,,47
+Office,37 110 W 30th St,,5,-,Office/Retail,4000,$3.50,47
+Office,38 234 W 30th St,,,-,Office/Retail,2400,$4.04,48
+Office,38 234 W 30th St,,GRND,-,Office/Retail,2300,$4.04,48
+Office,38 234 W 30th St,,2,-,Office/Retail,2000,,48
+Office,38 234 W 30th St,,5,-,Office/Retail,4000,$3.50,48
+Office,43 119 Fifth Ave,,5,-,Office,4134,,54
+Office,43 119 Fifth Ave,,5,-,Office,5000,$4.17,54
+Office,43 119 Fifth Ave,,6,-,Office,4465,,54
+Office,43 119 Fifth Ave,,17,-,Office,2121,$5.42,54
+Office,43 119 Fifth Ave,,3,-,Office/Retail,4750,$2.50,54
+Office,43 119 Fifth Ave,,4,-,Office/Retail,4750,$2.50,54
+Office,43 119 Fifth Ave,,5,-,Office/Retail,4750,$2.50,54
+Office,43 119 Fifth Ave,,6,-,Office/Retail,4750,$2.50,54
+Office,44 255 Fifth Ave,,5,-,Office,5000,$4.17,55
+Office,44 255 Fifth Ave,,6,-,Office,4465,,55
+Office,44 255 Fifth Ave,,17,-,Office,2121,$5.42,55
+Office,44 255 Fifth Ave,,3,-,Office/Retail,4750,$2.50,55
+Office,44 255 Fifth Ave,,4,-,Office/Retail,4750,$2.50,55
+Office,44 255 Fifth Ave,,5,-,Office/Retail,4750,$2.50,55
+Office,44 255 Fifth Ave,,6,-,Office/Retail,4750,$2.50,55
+Office,45 116 W Houston St,,6,-,Office,4465,,56
+Office,45 116 W Houston St,,17,-,Office,2121,$5.42,56
+Office,45 116 W Houston St,,3,-,Office/Retail,4750,$2.50,56
+Office,45 116 W Houston St,,4,-,Office/Retail,4750,$2.50,56
+Office,45 116 W Houston St,,5,-,Office/Retail,4750,$2.50,56
+Office,45 116 W Houston St,,6,-,Office/Retail,4750,$2.50,56
+Office,45 116 W Houston St,,GRND,-,Office/Medical,4000,Withheld,56
+Office,46 352 Park Ave,,17,-,Office,2121,$5.42,57
+Office,46 352 Park Ave,,3,-,Office/Retail,4750,$2.50,57
+Office,46 352 Park Ave,,4,-,Office/Retail,4750,$2.50,57
+Office,46 352 Park Ave,,5,-,Office/Retail,4750,$2.50,57
+Office,46 352 Park Ave,,6,-,Office/Retail,4750,$2.50,57
+Office,46 352 Park Ave,,GRND,-,Office/Medical,4000,Withheld,57
+Office,46 352 Park Ave,,4,-,Office,4890,,57
+Office,46 352 Park Ave,,5,-,Office,4890,,57
+Office,46 352 Park Ave,,6,-,Office,4890,,57
+Office,47 838 Sixth Ave,,3,-,Office/Retail,4750,$2.50,58
+Office,47 838 Sixth Ave,,4,-,Office/Retail,4750,$2.50,58
+Office,47 838 Sixth Ave,,5,-,Office/Retail,4750,$2.50,58
+Office,47 838 Sixth Ave,,6,-,Office/Retail,4750,$2.50,58
+Office,47 838 Sixth Ave,,GRND,-,Office/Medical,4000,Withheld,58
+Office,47 838 Sixth Ave,,4,-,Office,4890,,58
+Office,47 838 Sixth Ave,,5,-,Office,4890,,58
+Office,47 838 Sixth Ave,,6,-,Office,4890,,58
+Office,48 233 3rd Ave,,GRND,-,Office/Medical,4000,Withheld,59
+Office,48 233 3rd Ave,,4,-,Office,4890,,59
+Office,48 233 3rd Ave,,5,-,Office,4890,,59
+Office,48 233 3rd Ave,,6,-,Office,4890,,59
+Office,50 25 W 14th St,,11,-,Office,3921,,63
+Office,50 25 W 14th St,,4,-,Office,4100,,63
+Office,51 22 W 19th St,,11,-,Office,3921,,64
+Office,51 22 W 19th St,,4,-,Office,4100,,64
+Office,51 22 W 19th St,,12,-,Office,5000,,64
+Office,51 22 W 19th St,,15,-,Office,5000,,64
+Office,52 220 W 19th St,,11,-,Office,3921,,65
+Office,52 220 W 19th St,,4,-,Office,4100,,65
+Office,52 220 W 19th St,,12,-,Office,5000,,65
+Office,52 220 W 19th St,,15,-,Office,5000,,65
+Office,54 36 W 25th St,,12,-,Office,5000,,67
+Office,54 36 W 25th St,,15,-,Office,5000,,67
+Office,54 36 W 25th St,,3,-,Office,5000,,67
+Office,54 36 W 25th St,,4,-,Office,5000,,67
+Office,55 125 W 25th St,,3,-,Office,5000,,68
+Office,55 125 W 25th St,,4,-,Office,5000,,68
+Office,55 125 W 25th St,,4,-,Office,5000,,68
+Office,55 125 W 25th St,,8,-,Office,5000,,68
+Office,55 125 W 25th St,,12,-,Office,5000,,68
+Office,56 25 W 26th St,,3,-,Office,5000,,69
+Office,56 25 W 26th St,,4,-,Office,5000,,69
+Office,56 25 W 26th St,,4,-,Office,5000,,69
+Office,56 25 W 26th St,,8,-,Office,5000,,69
+Office,56 25 W 26th St,,12,-,Office,5000,,69
+Office,56 25 W 26th St,,,-,Office,4400,Withheld,69
+Office,57 109 W 27th St,,4,-,Office,5000,,71
+Office,57 109 W 27th St,,8,-,Office,5000,,71
+Office,57 109 W 27th St,,12,-,Office,5000,,71
+Office,57 109 W 27th St,,,-,Office,4400,Withheld,71
+Office,57 109 W 27th St,,9,-,Office,5000,,71
+Office,59 37 E 28th St,,,-,Office,4400,Withheld,73
+Office,59 37 E 28th St,,9,-,Office,5000,,73
+Office,60 37 W 28th St,,9,-,Office,5000,,74
+Office,60 37 W 28th St,,7,-,Office,4832,,74
+Office,61 205 W 28th St,,7,-,Office,4832,,75
+Office,61 205 W 28th St,,,-,Office/Retail,4330,Withheld,75
+Office,62 104 W 29th St,,7,-,Office,4832,,76
+Office,62 104 W 29th St,,,-,Office/Retail,4330,Withheld,76
+Office,64 22 E 30th St,,,-,Office/Retail,4330,Withheld,78
+Office,64 22 E 30th St,,1,-,Office/Retail,2897,,78
+Office,64 22 E 30th St,,2,-,Office,2900,,78
+Office,64 22 E 30th St,,3,-,Office,2966,,78
+Office,64 22 E 30th St,,5,-,Office,2984,,78
+Office,64 22 E 30th St,,6,-,Office,2988,,78
+Office,64 22 E 30th St,,11,-,Office,4578,,78
+Office,66 31 Bond St,,1,-,Office/Retail,2897,,80
+Office,66 31 Bond St,,2,-,Office,2900,,80
+Office,66 31 Bond St,,3,-,Office,2966,,80
+Office,66 31 Bond St,,5,-,Office,2984,,80
+Office,66 31 Bond St,,6,-,Office,2988,,80
+Office,66 31 Bond St,,11,-,Office,4578,,80
+Office,66 31 Bond St,,GRND,774,Office/Retail,725,Withheld,80
+Office,73 166 Crosby St,,5,-,Office,1000,,89
+Office,73 166 Crosby St,,3,-,Office,100,,89
+Office,74 245 Fifth Ave,,3,-,Office,100,,90
+Office,75 246 Fifth Ave,,3,-,Office,100,,91
+Office,76 261 Fifth Ave,,,8,815/817/819Office,4388,Withheld,92
+Office,77 333 Park Ave,,,8,815/817/819Office,4388,Withheld,93
+Office,77 333 Park Ave,,6,-,Office,4765,,93
+Office,77 333 Park Ave,,7,-,Office,4748,,93
+Office,77 333 Park Ave,,8,-,Office,4765,,93
+Office,77 333 Park Ave,,9,-,Office,2062,,93
+Office,78 377 Park Ave,,,8,815/817/819Office,4388,Withheld,94
+Office,78 377 Park Ave,,6,-,Office,4765,,94
+Office,78 377 Park Ave,,7,-,Office,4748,,94
+Office,78 377 Park Ave,,8,-,Office,4765,,94
+Office,78 377 Park Ave,,9,-,Office,2062,,94
+Office,79 381 Park Ave,,,8,815/817/819Office,4388,Withheld,96
+Office,79 381 Park Ave,,6,-,Office,4765,,96
+Office,79 381 Park Ave,,7,-,Office,4748,,96
+Office,79 381 Park Ave,,8,-,Office,4765,,96
+Office,79 381 Park Ave,,9,-,Office,2062,,96
+Office,79 381 Park Ave,,6,-,Office,4444,,96
+Office,80 1 Saint Marks Pl,,6,-,Office,4765,,97
+Office,80 1 Saint Marks Pl,,7,-,Office,4748,,97
+Office,80 1 Saint Marks Pl,,8,-,Office,4765,,97
+Office,80 1 Saint Marks Pl,,9,-,Office,2062,,97
+Office,80 1 Saint Marks Pl,,6,-,Office,4444,,97
+Office,80 1 Saint Marks Pl,,3,-,Office,3900,,97
+Office,80 1 Saint Marks Pl,,5,-,Office,3900,,97
+Office,81 330 Seventh Ave,,6,-,Office,4444,,98
+Office,81 330 Seventh Ave,,3,-,Office,3900,,98
+Office,81 330 Seventh Ave,,5,-,Office,3900,,98
+Office,81 330 Seventh Ave,,4,-,Office,4796,,98
+Office,81 330 Seventh Ave,,5,-,Office,4796,,98
+Office,81 330 Seventh Ave,,6,-,Office,4796,,98
+Office,82 350 Seventh Ave,,6,-,Office,4444,,99
+Office,82 350 Seventh Ave,,3,-,Office,3900,,99
+Office,82 350 Seventh Ave,,5,-,Office,3900,,99
+Office,82 350 Seventh Ave,,4,-,Office,4796,,99
+Office,82 350 Seventh Ave,,5,-,Office,4796,,99
+Office,82 350 Seventh Ave,,6,-,Office,4796,,99
+Office,85 99 University Pl,,4,-,Office,4796,,102
+Office,85 99 University Pl,,5,-,Office,4796,,102
+Office,85 99 University Pl,,6,-,Office,4796,,102
